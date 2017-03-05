@@ -1,9 +1,11 @@
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
+import ProductApp from './App'; 
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+// import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+ 
+		ReactDOM.render(
+		  <ProductApp />,
+		  document.getElementById('root')
+		);
