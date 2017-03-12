@@ -32,10 +32,21 @@ var products = [
         "price": 25.99,
         "review": "Cheaper brushes available that could achieve the same results",
         "rating": 2.5
-    }
+    },
+        "id": 5,
+        "name": "Real Techniques Facebrushes",
+        "price": 27.99,
+        "review": "Cheaper brushes available that could achieve the same results",
+        "rating": 2
   ] ; 
 
 var stubAPI = {
+     add : function(n,p,r,a) {
+      var len = products.length ;
+      var newL_len = products.push({
+         name: n, price: p, review: r, rating: a }) ;
+      return newL_len > len ;
+   },
    delete : function(k) {
        var elements = _.remove(products, 
            function(product) {
@@ -45,12 +56,6 @@ var stubAPI = {
    },
    getAll : function() {
        return products ;
-   },
-   add : function(n,p,r,a) {
-      var len = products.length ;
-      var newL_len = products.push({
-         name: n, price: p, review: r, rating: a }) ;
-      return newL_len > len ;
    },
    update : function(key,n,p,r,a) {
       var index = _.findIndex(products, function(product) {
