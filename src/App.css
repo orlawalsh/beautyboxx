@@ -1,3 +1,29 @@
+body{
+  background-image: url("/img/pink.jpg");
+  background-color: #e293f9;
+}
+td, thead{
+  background-color: #e293f9;
+
+}
+
+.logo {
+    background-image: url("/img/box.png");
+    background-repeat: no-repeat;
+    /*height: 200px;
+    width: 300px;*/
+    background-position: center top;
+    background-size: 190px 200px;
+    padding: 100px;
+}
+
+div, header{
+  height: 80px;
+  margin: 2px;
+  padding: 2px;
+  
+
+}
 .App {
   text-align: center;
 }
