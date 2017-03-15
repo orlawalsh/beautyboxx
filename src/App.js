@@ -74,6 +74,110 @@ var ProductForm = React.createClass({
       });
 
 
+var Product = React.createClass({
+          getInitialState : function() {
+             return {
+              status : '',
+              name: this.props.product.name,
+              price: this.props.product.price,
+              review: this.props.product.review,
+              rating: this.props.product.rating
+             } ;
+          },
+          handleDelete : function() {
+             this.setState({ status : 'del'} )
+          },
+          handleEdit : function() {
+              this.setState({ status : 'edit'} )
+          }, 
+          handleConfirm : function(e) { 
+              this.props.deleteHandler(this.props.product.name) ;
+          },    
+          handleCancel : function() {
+             this.setState({ status : '', 
+                   name: this.props.product.name,
+                   price: this.props.product.price,
+                   review: this.props.product.review,
+                   rating: this.props.product.rating} ) ;
+            }, 
+          handleSave : function(e) {
+              e.preventDefault();
+               var name = this.state.name.trim();
+               var price = this.state.price.trim();
+               var review = this.state.review.trim();
+               var rating = this.state.rating.trim();
+        if (!name || !price || !review || !rating) {
+          return;
+              }
+                            this.setState({status : ''} )
+              this.props.updateHandler(this.props.product.name,
+                       name,price,review,rating);
+
+            }, 
+          handleNameChange: function(e) {
+              this.setState({name: e.target.value});
+            },
+          handlePriceChange: function(e) {
+              this.setState({price: e.target.value});
+            },
+          handleReviewChange: function(e) {
+              this.setState({review: e.target.value});
+            },
+          handleRatingChange: function(e) {
+              this.setState({rating: e.target.value});
+            },
+          render: function(){
+               var activeButtons = buttons.normal ;
+               var leftButtonHandler = this.handleEdit ;
+               var rightButtonHandler = this.handleDelete ;
+               var fields = [
+                     <td key={'name'} >{this.state.name}</td>,
+                      <td key={'price'}>{this.state.price}</td>,
+                      <td key={'review'}>{this.state.review}</td>,
+                      <td key={'rating'}>{this.state.rating}</td>
+                   ] ;
+              if (this.state.status === 'del' ) {
+                   activeButtons = buttons.delete ;
+                   leftButtonHandler = this.handleCancel;
+                   rightButtonHandler = this.handleConfirm ;
+              } else if (this.state.status === 'edit' ) {
+                   activeButtons = buttons.edit ;
+                   leftButtonHandler = this.handleSave;
+                   rightButtonHandler = this.handleCancel ;
+                   fields = [
+                      <td key={'name'}><input type="text" className="form-control"
+                         value={this.state.name}
+                         onChange={this.handleNameChange} /> </td>,
+                      <td key={'price'}><input type="number" min="1"className="form-control"
+                         value={this.state.price}
+                         onChange={this.handlePriceChange} /> </td>,
+                     <td key={'review'}><input type="textarea" className="form-control"
+                         value={this.state.review}
+                         onChange={this.handleReviewChange} /> </td>,
+                      <td key={'rating'}><input type="number" min="1" max="5" className="form-control"
+                         value={this.state.rating}
+                         onChange={this.handleRatingChange} /> </td>,
+                   ] ;
+               }
+              return (
+                    <tr >
+                      {fields}
+                      <td>
+                          <input type="button" className={'btn ' + activeButtons.leftButtonColor} 
+                                 value={activeButtons.leftButtonVal}
+                                 onClick={leftButtonHandler} />
+                      </td>
+                      <td>
+                         <input type="button" className={'btn ' + activeButtons.rightButtonColor} 
+                               value={activeButtons.rightButtonVal} 
+                               onClick={rightButtonHandler} />
+                      </td>
+                      </tr>
+                   ) ;
+            }
+          });
+
+
     var ProductList = React.createClass({
           render: function(){
               var productRows = this.props.products.map(function(product){
@@ -127,7 +231,7 @@ var ProductForm = React.createClass({
                 );
           }
       });
-    
+
 
    var ProductApp = React.createClass({
 
