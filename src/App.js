@@ -73,6 +73,62 @@ var ProductForm = React.createClass({
         }
       });
 
+
+    var ProductList = React.createClass({
+          render: function(){
+              var productRows = this.props.products.map(function(product){
+                  return (
+                   <Product key={product.id}  product={product} 
+                       deleteHandler={this.props.deleteHandler} 
+                       updateHandler={this.props.updateHandler} />
+                    ) ;
+                }.bind(this) );
+              return (
+                  <tbody >
+
+                      <ProductForm
+                           addHandler={this.props.addHandler}/>
+                                                 {productRows}
+
+
+                  </tbody>
+                ) ;
+            }
+          });
+
+    var ProductsTable = React.createClass({
+
+
+    
+    render: function(){
+       
+
+            var inStyle = {color: "blue"};
+              return (
+        
+                                        
+                <table className="table table-bordered">
+<thead style={inStyle}>
+                      <tr>
+                      <th>Name of Product</th>
+                      <th>Price</th>
+                      <th>Review</th>
+                      <th>Rating</th>
+                      <th></th>
+                      <th></th>
+                      </tr>
+                    </thead>
+                      <ProductList products={this.props.products} 
+                          deleteHandler={this.props.deleteHandler} 
+                          addHandler={this.props.addHandler}
+                           updateHandler={this.props.updateHandler}  />
+                </table>
+                // </div>
+                );
+          }
+      });
+    
+
    var ProductApp = React.createClass({
 
           getInitialState: function() {
