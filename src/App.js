@@ -1,9 +1,39 @@
-import React from 'react';
+    import React from 'react';
     import api from './test/stubAPI';
     import  './App.css';
     import buttons from './config/buttonsConfig';
 
-var ProductForm = React.createClass({
+
+var SelectBox = React.createClass({
+          handleChange : function(e, type,value) {
+               e.preventDefault();
+               this.props.onUserInput( type,value);
+          },
+          handleTextChange : function(e) {
+                this.handleChange( e, 'search', e.target.value);
+          },
+          handleSortChange : function(e) {
+              this.handleChange(e, 'sort', e.target.value);
+          },
+          render: function(){
+               return (
+                 <div className="col-md-10">
+                 <input type="text" placeholder="Search" 
+                              value={this.props.filterText}
+                              onChange={this.handleTextChange} />
+               Sort by:
+                   <select id="sort" value={this.props.order } 
+                             onChange={this.handleSortChange} >
+                   <option value="name">Alphabetical</option>
+                   <option value="price">Price</option>
+               </select>
+                 </div>
+                );
+              }
+           });
+
+
+    var ProductForm = React.createClass({
         getInitialState: function() {
            return { name: '', price: '', review: '', rating: ''};
        },
@@ -73,8 +103,7 @@ var ProductForm = React.createClass({
         }
       });
 
-
-var Product = React.createClass({
+    var Product = React.createClass({
           getInitialState : function() {
              return {
               status : '',
@@ -177,7 +206,6 @@ var Product = React.createClass({
             }
           });
 
-
     var ProductList = React.createClass({
           render: function(){
               var productRows = this.props.products.map(function(product){
@@ -232,8 +260,7 @@ var Product = React.createClass({
           }
       });
 
-
-   var ProductApp = React.createClass({
+      var ProductApp = React.createClass({
 
           getInitialState: function() {
            return { search: '', sort: 'name' } ;
@@ -253,21 +280,39 @@ var Product = React.createClass({
               }             
           },  
 
-          render: function(){
+    handleChange : function(type,value) {
+        if ( type === 'search' ) {
+            this.setState( { search: value } ) ;
+        } else {
+            this.setState( { sort: value } ) ;
+        }
+    },
+    render: function(){
                     var products = api.getAll();
 
+        var list = products.filter(function(p) {
+            return p.name.toLowerCase().search(
+                    this.state.search.toLowerCase() ) !== -1 ;
+        }.bind(this) );
+        var filteredList = _.sortBy(list, this.state.sort) ;
+
+           
+                    return (    
                     <div>
                        <div className="logo"></div>
-                    <ProductsTable products={filteredList} 
+
+                  <SelectBox onUserInput={this.handleChange}
+                                          filterText={this.state.search}
+                                          sort={this.state.sort } />
+
+                       <ProductsTable products={filteredList} 
                           deleteHandler={this.deleteProduct}
                           addHandler={this.addProduct} 
                           updateHandler={this.updateProduct}  />
                        
                     </div>
-
-                    );
-              }
-
-          });
+              );
+          }
+      });
 
 export default ProductApp;
