@@ -32,7 +32,7 @@ This application runs on http://localhost:3000/
 Diagram of app's data model (see example below) AND/OR a sample of the test data used (JSON or equivalent).
 ![][image1]
 
-JSON Sample
+
 ![][image2]
 
 ## App Component Design.
