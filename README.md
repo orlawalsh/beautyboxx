@@ -47,10 +47,9 @@ A diagram showing the app's hierarchical component design (see example below).
 ![][image4]
 
 ## Routing.
-+ /foos - displays all published foos
-+ /foos/:id - detail view of a particular foo (:id)
-+ etc
-+ etc
++ / - displays all product reviews.
++ /about - diplays details about the review page.
++ /contact - displays details about how to contact the developer.
 
 ## Extra features
 

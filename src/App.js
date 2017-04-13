@@ -1,7 +1,10 @@
     import React from 'react';
+    import ReactDOM from 'react-dom';
     import api from './test/stubAPI';
     import  './App.css';
+    import  './about.js';
     import buttons from './config/buttonsConfig';
+    import { Router, Link, Route, browserHistory } from 'react-router';
 
 
 var SelectBox = React.createClass({
@@ -260,6 +263,51 @@ var SelectBox = React.createClass({
           }
       });
 
+
+
+var Contact = React.createClass({  
+  render: function() {
+    return (
+      <div>
+        <h2>Contact Us</h2>
+      </div>
+    );
+  } 
+  }) ;
+
+var Header = React.createClass({
+  render : function() {
+    return (
+      <div className="navbar navbar-fixed-top" >
+            <div className="container">
+              <Link to="/" id="logo" >Beauty Boxx</Link>
+              <nav>
+                  <ul className="nav navbar-nav navbar-right">
+                    <li><Link to="/about">About</Link></li>
+                    <li><Link to="/contact">Contact Us</Link></li>
+                  </ul>
+              </nav>
+            </div>
+          </div>
+      );
+  }
+});
+
+
+var Footer = React.createClass({
+  render : function() {
+    return (
+      <footer className="footer">
+          <small>
+            Built with <a href="https://facebook.github.io/react/">ReactJS </a>
+            by Orla Walsh
+          </small>
+
+        </footer>
+      ) ;
+  }
+});
+
       var ProductApp = React.createClass({
 
           getInitialState: function() {
@@ -299,8 +347,9 @@ var SelectBox = React.createClass({
            
                     return (    
                     <div>
+                    <Header />
                        <div className="logo"></div>
-
+ 
                   <SelectBox onUserInput={this.handleChange}
                                           filterText={this.state.search}
                                           sort={this.state.sort } />
@@ -309,7 +358,7 @@ var SelectBox = React.createClass({
                           deleteHandler={this.deleteProduct}
                           addHandler={this.addProduct} 
                           updateHandler={this.updateProduct}  />
-                       
+                       <Footer />
                     </div>
               );
           }
