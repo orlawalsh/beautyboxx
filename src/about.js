@@ -2,6 +2,8 @@
     import ReactDOM from 'react-dom';
     import api from './test/stubAPI';
     import  './App.css';
+    import ProductApp from './App';
+
     import buttons from './config/buttonsConfig';
     import { Router, Link, Route, browserHistory } from 'react-router';
 
@@ -15,3 +17,18 @@ var About = React.createClass({
     );
   } 
   });
+
+
+var App = React.createClass({
+  render : function() {
+    return (
+      <div>
+        <Header />
+        <div className="container">
+        {this.props.children}
+      </div>
+      <Footer />
+      </div>
+    )
+  }
+});

@@ -7,6 +7,15 @@ td, thead{
 
 }
 
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
+
 .logo {
     background-image: url("/img/box.png");
     background-repeat: no-repeat;
@@ -15,6 +24,17 @@ td, thead{
     background-position: center top;
     background-size: 190px 200px;
     padding: 100px;
+}
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
 }
 
 div, header{
@@ -52,3 +72,32 @@ div, header{
 /*.navnavbar-inverse {
     background-color:#e293f9 !important;
 }*/
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+}
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 15px;
+}

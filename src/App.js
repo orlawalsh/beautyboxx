@@ -279,8 +279,8 @@ var Header = React.createClass({
   render : function() {
     return (
       <div className="navbar navbar-fixed-top" >
-            <div className="container">
-              <Link to="/" id="logo" >Beauty Boxx</Link>
+            <div className="logo">
+              <Link to="/" id="logo" ></Link>
               <nav>
                   <ul className="nav navbar-nav navbar-right">
                     <li><Link to="/about">About</Link></li>

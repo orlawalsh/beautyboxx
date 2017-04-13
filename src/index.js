@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import ProductApp from './App'; 
 import About from './about.js'; 
 import Contact from './App'; 
+import  './App.css';
 
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
  
