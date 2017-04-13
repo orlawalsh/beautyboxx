@@ -2,8 +2,6 @@
     import ReactDOM from 'react-dom';
     import api from './test/stubAPI';
     import  './App.css';
-    import ProductApp from './App';
-
     import buttons from './config/buttonsConfig';
     import { Router, Link, Route, browserHistory } from 'react-router';
 

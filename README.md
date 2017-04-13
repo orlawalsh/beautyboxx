@@ -56,7 +56,7 @@ A diagram showing the app's hierarchical component design (see example below).
 Users can search for a product review and they can also filter for reviews alphabetically or by price.
 
 ## Independent learning.
-I tried to implement a user registration and login in but I wasn't fully able to implement these features due to the lack of resourses available on the internet and the timeframe. I have gained a reasonable understanding of React from completing this assignment.
+I tried to implement a user registration and login in but I wasn't fully able to implement these features due to the lack of resourses available on the internet and the timeframe. I also tried to implement routing but I found it difficult and could not get it to display pages once implemented. I have gained a reasonable understanding of React from completing this assignment.
 
 
 [image1]: ./model.png
