@@ -21,6 +21,7 @@ List of user features:
 
 ## Cloning Application 
 + git clone https://github.com/orlawalsh/beautyboxx
++ cd beautyboxx
 + npm install
 + npm start
 
@@ -46,8 +47,6 @@ A diagram showing the app's hierarchical component design (see example below).
 ![][image4]
 
 ## Routing.
-. . . . List each route supported and state the associated view . . . . . 
-
 + /foos - displays all published foos
 + /foos/:id - detail view of a particular foo (:id)
 + etc
@@ -58,15 +57,16 @@ A diagram showing the app's hierarchical component design (see example below).
 Users can search for a product review and they can also filter for reviews alphabetically or by price.
 
 ## Independent learning.
-
-. . . . . State the non-standard aspects of Angular (or other related technologies) that you researched and applied in this assignment . . . . .  
-
+I tried to implement a user registration and login in but I wasn't fully able to implement these features due to the lack of resourses available on the internet and the timeframe. I have gained a reasonable understanding of React from completing this assignment.
 
 
 [image1]: ./model.png
 [image2]: ./json.png
 [image3]: ./design.png
 [image4]: ./layout.png
+
+
+
 
 
 
